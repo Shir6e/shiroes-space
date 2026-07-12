@@ -61,25 +61,15 @@ export default function App() {
             </a>
           ))}
         </div>
-
-        {/* Menu Mobile */}
-<div 
-  className={`fixed inset-0 z-[200] flex flex-col items-center justify-center gap-10 bg-neutral-950 transition-opacity duration-300 ${
-    isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-  }`}
->
-  {['home', 'about', 'projects', 'contact'].map((item) => (
-    <a 
-      key={item}
-      href={`#${item}`} 
-      onClick={() => setIsMenuOpen(false)}
-      className="text-2xl font-black uppercase tracking-widest text-red-600 hover:text-white transition-colors"
-    >
-      {item}
-    </a>
-  ))}
-</div>
       </nav>
+
+      {/* --- MENU MOBILE (PINDAHKAN KE SINI) --- */}
+      <div className={`fixed inset-0 z-[200] flex flex-col items-center justify-center gap-10 bg-neutral-950 transition-all duration-300 md:hidden ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+          <a href="#home" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-red-600 uppercase">HOME</a>
+          <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-red-600 uppercase">ABOUT</a>
+          <a href="#projects" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-red-600 uppercase">PROJECTS</a>
+          <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-red-600 uppercase">CONTACT</a>
+      </div>
 
       {/* --- KONTEN UTAMA (Tambahkan id="home" di sini) --- */}
       <main id="home" className="flex flex-col items-center justify-center min-h-screen pt-24 px-4">
