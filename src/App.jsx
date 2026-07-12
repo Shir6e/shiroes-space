@@ -37,13 +37,11 @@ export default function App() {
       <nav className="fixed top-0 left-0 w-full px-8 py-5 flex items-center justify-between bg-neutral-950/90 backdrop-blur-md border-b border-red-950/40 z-[100]">
         
         {/* Logo */}
-        <div className="text-2xl font-black tracking-widest text-red-500 cursor-pointer z-[110]">
-          SHIROE
-        </div>
+        <div className="text-2xl font-black tracking-widest text-red-500 cursor-pointer">SHIROE</div>
 
-        {/* Tombol Hamburger (Khusus Layar HP) */}
+        {/* Tombol Hamburger/X */}
         <button 
-          className="md:hidden text-red-500 z-[110] relative"
+          className="md:hidden text-red-500 z-[110] relative p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
@@ -56,32 +54,28 @@ export default function App() {
         {/* Menu Desktop */}
         <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wider">
           {['home', 'about', 'projects', 'contact'].map((item) => (
-            <a key={item} href={`#${item}`} className={`transition-all duration-300 uppercase ${activeSection === item ? 'text-white' : 'text-red-500 hover:text-red-400'}`}>
+            <a key={item} href={`#${item}`} className={`transition-all duration-300 uppercase ${activeSection === item ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]' : 'text-red-500 hover:text-red-400'}`}>
               {item}
             </a>
           ))}
         </div>
       </nav>
 
-      {/* --- SIDEBAR MOBILE --- */}
-<div 
-  className={`fixed top-0 right-0 h-full w-64 bg-neutral-950/80 backdrop-blur-lg border-l border-red-600 transition-transform duration-300 ease-in-out md:hidden z-[200] ${
-    isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-  }`}
->
-  <div className="flex flex-col items-center justify-center h-full gap-10">
-    {['home', 'about', 'projects', 'contact'].map((item) => (
-      <a 
-        key={item}
-        href={`#${item}`} 
-        onClick={() => setIsMenuOpen(false)}
-        className="text-xl font-black text-red-500 uppercase tracking-widest hover:text-white transition-colors"
-      >
-        {item}
-      </a>
-    ))}
-  </div>
-</div>
+      {/* --- SIDEBAR MOBILE (Di bawah Navbar) --- */}
+      <div className={`fixed top-[73px] right-0 w-64 bg-neutral-950/90 backdrop-blur-md border-l border-b border-red-600 transition-transform duration-300 ease-in-out md:hidden z-[90] ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col items-center py-8 gap-8">
+          {['home', 'about', 'projects', 'contact'].map((item) => (
+            <a 
+              key={item}
+              href={`#${item}`} 
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-xl font-black uppercase tracking-widest transition-all duration-300 ${activeSection === item ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]' : 'text-red-600 hover:text-red-400'}`}
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+      </div>
 
       {/* --- KONTEN UTAMA (Tambahkan id="home" di sini) --- */}
       <main id="home" className="flex flex-col items-center justify-center min-h-screen pt-24 px-4">
