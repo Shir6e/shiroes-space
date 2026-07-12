@@ -34,58 +34,47 @@ export default function App() {
     <div className="min-h-screen bg-neutral-950 text-neutral-200 font-sans selection:bg-red-600 selection:text-white">
       
       {/* --- NAVBAR --- */}
-      <nav className="fixed top-0 left-0 w-full px-8 py-5 flex items-center justify-between bg-neutral-950/90 backdrop-blur-md border-b border-red-950/40 z-50 transition-all duration-300">
+      <nav className="fixed top-0 left-0 w-full px-8 py-5 flex items-center justify-between bg-neutral-950/90 backdrop-blur-md border-b border-red-950/40 z-[100]">
         
         {/* Logo */}
-        <div className="text-2xl font-black tracking-widest text-red-500 cursor-pointer hover:text-red-400 transition-colors z-50 relative">
+        <div className="text-2xl font-black tracking-widest text-red-500 cursor-pointer z-[110]">
           SHIROE
         </div>
 
         {/* Tombol Hamburger (Khusus Layar HP) */}
         <button 
-          className="md:hidden text-red-500 hover:text-red-400 z-50 relative focus:outline-none"
+          className="md:hidden text-red-500 z-[110] relative"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
-            /* Ikon Silang (Tutup) */
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           ) : (
-            /* Ikon Hamburger (Buka) */
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
           )}
         </button>
 
-        {/* Menu Desktop (Layar Besar) */}
+        {/* Menu Desktop */}
         <div className="hidden md:flex gap-8 text-sm font-semibold tracking-wider">
           {['home', 'about', 'projects', 'contact'].map((item) => (
-            <a 
-              key={item}
-              href={`#${item}`} 
-              className={`transition-all duration-300 uppercase ${activeSection === item ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]' : 'text-red-500 hover:text-red-400'}`}
-            >
+            <a key={item} href={`#${item}`} className={`transition-all duration-300 uppercase ${activeSection === item ? 'text-white' : 'text-red-500 hover:text-red-400'}`}>
               {item}
             </a>
           ))}
         </div>
 
-        {/* Menu Mobile (Layar HP) */}
-        <div className={`fixed inset-0 bg-neutral-950/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 transition-all duration-300 md:hidden z-40 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        {/* Menu Mobile */}
+        <div className={`fixed inset-0 bg-neutral-950 flex flex-col items-center justify-center gap-10 transition-all duration-300 md:hidden z-[105] ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
           {['home', 'about', 'projects', 'contact'].map((item) => (
             <a 
               key={item}
               href={`#${item}`} 
               onClick={() => setIsMenuOpen(false)}
-              className={`text-2xl font-black tracking-widest uppercase transition-colors ${activeSection === item ? 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]' : 'text-red-600'}`}
+              className="text-2xl font-black text-red-600 uppercase"
             >
               {item}
             </a>
           ))}
         </div>
-        
       </nav>
 
       {/* --- KONTEN UTAMA (Tambahkan id="home" di sini) --- */}
