@@ -62,7 +62,7 @@ export default function App() {
       </nav>
 
       {/* --- SIDEBAR MOBILE (Di bawah Navbar) --- */}
-      <div className={`fixed top-[73px] right-0 w-64 bg-neutral-950/90 backdrop-blur-md border-l border-b border-red-600 transition-transform duration-300 ease-in-out md:hidden z-[90] ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-[73px] right-0 w-64 bg-neutral-950/90 backdrop-blur-md border-l border-red-600 transition-transform duration-300 ease-in-out md:hidden z-[90] ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col items-center py-8 gap-8">
           {['home', 'about', 'projects', 'contact'].map((item) => (
             <a 
